@@ -13,7 +13,7 @@ public class PrinterService extends BaseService {
     public void printOut(String pilihan, ArrayList<Object> listItems) {
         for (Object obj : listItems) {
             if (obj instanceof Manusia manusia && manusia.getName().equalsIgnoreCase(pilihan)) {
-                if (pilihan.equals("deki")) {
+                if (pilihan.equals("dheka")) {
                     manusia.memilikiAnak();
                     manusia.bekerja();
                     manusia.bermain();
@@ -21,9 +21,9 @@ public class PrinterService extends BaseService {
                     manusia.memperbaikiKendaraan();
 
                     if (manusia instanceof Ayah ayah) {
-                        ayah.perkenalan("Ibu Rumah Tangga", "Putri");
+                        ayah.perkenalan("Calo akun game", "bryan");
                     }
-                } else if (pilihan.equals("putri")) {
+                } else if (pilihan.equals("belva")) {
                     manusia.mengurusRumah();
                     manusia.memasak();
                     manusia.berbicara();
@@ -31,6 +31,28 @@ public class PrinterService extends BaseService {
 
                     if (manusia instanceof Ibu ibu) {
                         ibu.perkenalan("Nasi Goreng", "Ibu Rumah Tangga");
+                    }
+                } else if (pilihan.equals("bryan")){
+                    manusia.berbicara();
+                    manusia.bermain();
+                    if (manusia instanceof Anak anak) {
+                        anak.belajar();
+                        anak.perkenalan("Balet");
+                    }
+                } else if (pilihan.equals("agis")){
+                    manusia.berbicara();
+                    if (manusia instanceof Kakek kakek) {
+                        kakek.bercerita();
+                    }
+                } else if (pilihan.equals("andiani")) {
+                    manusia.berbicara();
+                    if (manusia instanceof Nenek nenek) {
+                        nenek.membuatKue();
+                    }
+                } else if (pilihan.equals("yayi")) {
+                    manusia.berbicara();
+                    if (manusia instanceof PembantuRumahTangga art) {
+                        art.bekerja();
                     }
                 }
             }
