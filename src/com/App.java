@@ -12,7 +12,14 @@ public class App {
         System.out.print("Masukan pilihan: ");
         String pilihan = input.nextLine().toLowerCase();
 
-        String[] names = { "Deki", "Putri" };
+        String[] names = { 
+                "Dheka", 
+                "Belva",
+                "Bryan",
+                "Agis",
+                "Andiani",
+                "Yayi"
+         };
         
         ArrayList<Object> listItems = ObjectFactory.createObjects(names);
         PrinterService.printOut(pilihan, listItems);
