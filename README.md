@@ -74,10 +74,10 @@ avatar-ang
 
 ## ▶️ Cara Menjalankan Program
 1. MacOs / Linux:
-```bash
+    ```bash
     ./scripts/runApp.sh
-```
+    ```
 2. Windows (PowerShell):
-```powershell
+    ```powershell
     .\scripts\runApp.ps1
-```
+    ```
