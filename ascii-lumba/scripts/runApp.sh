@@ -1,0 +1,1 @@
+javac -d out src/App.java; java -cp out App
