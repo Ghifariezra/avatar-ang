@@ -1,0 +1,5 @@
+# Scripts
+scripts/*.ps1
+!scripts/runApp.ps1
+!scripts/runApp.sh
+bin
