@@ -1,4 +1,6 @@
-package com.polymorphism;
+package com.polymorphism.ibu;
+
+import com.polymorphism.Manusia;
 
 public class Ibu extends Manusia {
     private String keahlianMasak;

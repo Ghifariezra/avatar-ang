@@ -1,7 +1,8 @@
 package com.services;
 
 import java.util.ArrayList;
-import com.polymorphism.*;
+import com.polymorphism.ayah.*;
+import com.polymorphism.ibu.*;
 
 public class ObjectFactory extends BaseService {
     @Override
@@ -16,30 +17,33 @@ public class ObjectFactory extends BaseService {
                             name, 28, "Bogor", true, "Laki-laki",
                             "Main Game", 2, "Mobil"));
                     break;
+                case "ghifari":
+                    listItems.add(new AyahPekerja(
+                            name, 22, "Bogor", true, "Laki-laki",
+                            "Main Game", 2, "Mobil", "PT. XYZ", "Manager"
+                    ));
+                    break;
+                case "agis":
+                    listItems.add(new AyahWirausaha(
+                            name, 45, "Bogor", true, "Laki-laki",
+                            "Main Game", 2, "Mobil", "PT. ABC", "Retail"
+                    ));
+                    break;
                 case "belva":
                     listItems.add(new Ibu(
                             name, 27, "Bogor", false, "Perempuan",
                             "Nasi Goreng", "SMA"));
                     break;
-                case "bryan":
-                    listItems.add(new Anak(
-                            name, 18, "Bogor", false, "Laki-laki",
-                            "SMA", "Melakukan hal baik"));
+                case "bunga":
+                    listItems.add(new IbuKarir(
+                            name, 27, "Bogor", false, "Perempuan",
+                            "Nasi Goreng", "S1", "PT. Anggur", "CEO"
+                    ));
                     break;
-                case "agis":
-                    listItems.add(new Kakek(
-                            name, 80, "Bogor", false, "Laki-laki",
-                            "Tentang pertama kali ketemu Nenek."));
-                    break;
-                case "andiani":
-                    listItems.add(new Nenek(
-                            name, 60, "Bogor", false, "Perempuan",
-                            "Tentang pertama kali ketemu nenek."));
-                    break;
-                case "yayi":
-                    listItems.add(new PembantuRumahTangga(
-                        name, 37, "Bogor", true, "Perempuan",
-                        "Melakukan tugas rumah tangga."
+                case "lilis":
+                    listItems.add(new IbuRumahTangga(
+                            name, 27, "Bogor", false, "Perempuan",
+                            "Nasi Goreng", "S1", 2, "Mengajar anak"
                     ));
                     break;
             }

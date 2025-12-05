@@ -1,4 +1,6 @@
-package com.polymorphism;
+package com.polymorphism.ayah;
+
+import com.polymorphism.Manusia;
 
 public class Ayah extends Manusia {
     private String hobi;
