@@ -3,5 +3,6 @@ scripts/*.ps1
 !scripts/runApp.ps1
 !scripts/runApp.sh
 bin
+lib
 uml/*
 !uml/diagram.svg
