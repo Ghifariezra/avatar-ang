@@ -3,4 +3,5 @@ scripts/*.ps1
 !scripts/runApp.ps1
 !scripts/runApp.sh
 bin
-uml/
+uml/*
+!uml/diagram.svg
