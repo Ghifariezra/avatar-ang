@@ -9,67 +9,46 @@
 | 3. | Bryan     | 4524210020 | Anggota   |
 | 4. | Ghifari   | 4524210041 | Anggota   |
 
+---
+
+## Class Diagram
+![Class Diagram](./uml/diagram.svg)
+
+---
+
 ## Folder Struktur
 ```bash
-avatar-ang
-|   .gitignore
-|   README.md
-|   
-+---.github
-|   \---java-upgrade
-|       |   .gitignore
-|       |
-|       \---20251027022832
-|           |   progress.md
-|           |
-|           \---logs
-|                   0.log
-|
-+---.vscode
-|       settings.json
-|
-+---bin
-|   \---com
-|       |   App.class
-|       |
-|       +---polymorphism
-|       |       Anak.class
-|       |       Ayah.class
-|       |       Ibu.class
-|       |       Kakek.class
-|       |       Manusia.class
-|       |       Nenek.class
-|       |       PembantuRumahTangga.class
-|       |
-|       \---services
-|               BaseService.class
-|               ObjectFactory.class
-|               PrinterService.class
-|
-+---lib
-+---scripts
-|       createBranch.ps1
-|       generateFile.ps1
-|       runApp.ps1
-|       runApp.sh
-|
-\---src
-    \---com
-        |   App.java
-        |
-        +---polymorphism
-        |       Anak.java
-        |       Ayah.java
-        |       Ibu.java
-        |       Kakek.java
-        |       Manusia.java
-        |       Nenek.java
-        |       PembantuRumahTangga.java
-        |
-        \---services
-                BaseService.java
-                ObjectFactory.java
-                PrinterService.java
+./MANUSIA
+│   .gitignore
+│   README.md
+├───scripts
+│       runApp.ps1
+│       runApp.sh
+│
+├───src
+│   └───com
+│       │   App.java
+│       │
+│       ├───polymorphism
+│       │   │   Manusia.java
+│       │   │
+│       │   ├───ayah
+│       │   │       Ayah.java
+│       │   │       AyahPekerja.java
+│       │   │       AyahWirausaha.java
+│       │   │
+│       │   └───ibu
+│       │           Ibu.java
+│       │           IbuKarir.java
+│       │           IbuRumahTangga.java
+│       │
+│       └───services
+│               BaseService.java
+│               ObjectFactory.java
+│               PrinterService.java
+│
+└───uml
+        diagram.svg
 ```
 
 ## ▶️ Cara Menjalankan Program
