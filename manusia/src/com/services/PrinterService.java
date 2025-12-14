@@ -7,7 +7,6 @@ import java.util.Scanner;
 import com.polymorphism.Manusia;
 
 public class PrinterService extends BaseService {
-
     @Override
     public ArrayList<Object> createObjects(String[] names) {
         return null;
@@ -24,18 +23,22 @@ public class PrinterService extends BaseService {
 
             playAnimation(pilihan);
 
-            System.out.println("Pilih aksi untuk " + "(" + manusia.getClass().getSimpleName() + ") " + manusia.getNama() + ":");
-            printMethodChoices(obj, input);
-
-            System.out.println("=================================");
+            System.out.println("\n=== Pilih aksi untuk (" + manusia.getClass().getSimpleName() + ") "
+                    + manusia.getNama() + " ===");
+            boolean continueMenu = true;
+            while (continueMenu) {
+                continueMenu = printMethodChoices(obj, input);
+            }
+            System.out.println("=== Selesai aksi untuk " + manusia.getNama() + " ===\n");
         }
     }
 
-    private void printMethodChoices(Object obj, Scanner input) {
+    /**
+     * Mengembalikan true jika ingin menampilkan menu ulang, false untuk keluar
+     */
+    private boolean printMethodChoices(Object obj, Scanner input) {
         Method[] methods = obj.getClass().getDeclaredMethods();
 
-        // Filter method yang ingin ditampilkan (misal abaikan method private dan
-        // synthetic)
         ArrayList<Method> methodList = new ArrayList<>();
         for (Method m : methods) {
             if (!m.isSynthetic() && m.getParameterCount() == 0) { // hanya method tanpa parameter
@@ -47,7 +50,7 @@ public class PrinterService extends BaseService {
         for (int i = 0; i < methodList.size(); i++) {
             System.out.println((i + 1) + ". " + methodList.get(i).getName());
         }
-        System.out.println("0. Lewati");
+        System.out.println("0. Lewati / Kembali");
 
         System.out.print("Masukkan pilihan: ");
         int pilihanMethod = -1;
@@ -58,8 +61,8 @@ public class PrinterService extends BaseService {
         }
 
         if (pilihanMethod == 0) {
-            System.out.println("Lewati aksi.");
-            return;
+            System.out.println("Lewati aksi.\n");
+            return false; // keluar menu aksi
         }
 
         if (pilihanMethod > 0 && pilihanMethod <= methodList.size()) {
@@ -67,11 +70,16 @@ public class PrinterService extends BaseService {
             try {
                 methodToInvoke.setAccessible(true);
                 methodToInvoke.invoke(obj);
+                System.out.println(); // baris kosong setelah aksi
+                // Tambahkan delay singkat jika ingin (opsional)
+                // Thread.sleep(500);
             } catch (Exception e) {
-                System.out.println("Gagal menjalankan metode: " + e.getMessage());
+                System.out.println("⚠ Gagal menjalankan metode: " + e.getMessage());
             }
+            return true; // ulangi menu
         } else {
-            System.out.println("Pilihan tidak valid.");
+            System.out.println("❌ Pilihan tidak valid. Silakan coba lagi.\n");
+            return true; // ulangi menu
         }
     }
 

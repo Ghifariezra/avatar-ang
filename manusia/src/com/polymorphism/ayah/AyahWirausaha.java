@@ -17,14 +17,34 @@ public class AyahWirausaha extends Ayah {
         System.out.println(nama + " mengelola usaha " + namaUsaha + ".");
     }
 
-    public void bernegosiasi() {
-        System.out.println(nama + " sedang bernegosiasi dengan klien.");
-    }
-
     @Override
     public void perkenalan() {
         super.perkenalan();
         System.out.println("Usaha : " + namaUsaha);
         System.out.println("Bidang : " + bidangUsaha);
+    }
+
+    public void bernegosiasi() {
+        System.out.println(nama + " sedang bernegosiasi dengan klien.");
+    }
+
+    public void memasarkanProduk() {
+        System.out.println(nama + " memasarkan produk dari usaha " + namaUsaha + ".");
+    }
+
+    public void mengaturKeuangan() {
+        System.out.println(nama + " mengatur keuangan usaha " + namaUsaha + ".");
+    }
+
+    public void mengembangkanUsaha() {
+        System.out.println(nama + " mengembangkan usaha " + namaUsaha + ".");
+    }
+
+    public void menghadiriPameran() {
+        System.out.println(nama + " menghadiri pameran bisnis untuk usaha " + namaUsaha + ".");
+    }
+
+    public void merekrutKaryawan() {
+        System.out.println(nama + " merekrut karyawan untuk usaha " + namaUsaha + ".");
     }
 }
