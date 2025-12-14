@@ -1,105 +1,78 @@
 package com.services;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Scanner;
+
 import com.polymorphism.Manusia;
-import com.polymorphism.ayah.Ayah;
-import com.polymorphism.ayah.AyahPekerja;
-import com.polymorphism.ayah.AyahWirausaha;
-import com.polymorphism.ibu.Ibu;
-import com.polymorphism.ibu.IbuKarir;
-import com.polymorphism.ibu.IbuRumahTangga;
 
 public class PrinterService extends BaseService {
+
     @Override
     public ArrayList<Object> createObjects(String[] names) {
         return null;
     }
 
     @Override
-    public void printOut(String pilihan, ArrayList<Object> listItems) {
+    public void printOut(String pilihan, ArrayList<Object> listItems, Scanner input) {
         for (Object obj : listItems) {
+            if (!(obj instanceof Manusia manusia))
+                continue;
 
-            if (obj instanceof Manusia manusia &&
-                    manusia.getName().equalsIgnoreCase(pilihan)) {
+            if (!manusia.getNama().equalsIgnoreCase(pilihan))
+                continue;
 
-                switch (pilihan.toLowerCase()) {
-                    case "dheka" -> {
-                        playAnimation(pilihan);
-                        // aksiAyah(manusia);
-                        if (manusia instanceof Ayah ayah) {
-                            System.out.println("=========");
-                            System.out.println(ayah.getClass() + " -> " + ayah.getClass());
-                            ayah.perkenalan("Calo akun game", "Bryan");
-                        }
-                    }
+            playAnimation(pilihan);
 
-                    case "ghifari" -> {
-                        playAnimation(pilihan);
-                        // aksiAyah(manusia);
-                        if (manusia instanceof AyahPekerja ayah) {
-                            System.out.println("=========");
-                            System.out.println(ayah.getClass() + " -> " + ayah.getClass());
-                            ayah.perkenalan("Manager", "Deon", "Project A");
-                        }
-                    }
+            System.out.println("Pilih aksi untuk " + "(" + manusia.getClass().getSimpleName() + ") " + manusia.getNama() + ":");
+            printMethodChoices(obj, input);
 
-                    case "agis" -> {
-                        playAnimation(pilihan);
-                        // aksiAyah(manusia);
-                        if (manusia instanceof AyahWirausaha ayah) {
-                            System.out.println("=========");
-                            System.out.println(ayah.getClass() + " -> " + ayah.getClass());
-                            ayah.perkenalan("Wirausaha", "Diki", 8);
-                        }
-                    }
-
-                    case "belva" -> {
-                        playAnimation(pilihan);
-                        // aksiIbu(manusia);
-                        if (manusia instanceof Ibu ibu) {
-                            System.out.println("=========");
-                            System.out.println(ibu.getClass() + " -> " + ibu.getClass());
-                            ibu.perkenalan("Nasi Goreng", "Ibu Rumah Tangga");
-                        }
-                    }
-
-                    case "bunga" -> {
-                        playAnimation(pilihan);
-                        // aksiIbu(manusia);
-                        if (manusia instanceof IbuKarir ibu) {
-                            System.out.println(ibu.getClass() + " -> " + ibu.getClass());
-
-                            ibu.perkenalan("Nasi Goreng", "CEO", 5);
-                        }
-                    }
-
-                    case "lilis" -> {
-                        playAnimation(pilihan);
-                        // aksiIbu(manusia);
-                        if (manusia instanceof IbuRumahTangga ibu) {
-                            System.out.println(ibu.getClass() + " -> " + ibu.getClass());
-
-                            ibu.perkenalan("Nasi Kucing", "Ibu Rumah Tangga", "Mommie Sharing");
-                        }
-                    }
-                }
-            }
+            System.out.println("=================================");
         }
     }
 
-    protected void aksiAyah(Manusia manusia) {
-        manusia.memilikiAnak();
-        manusia.bekerja();
-        manusia.bermain();
-        manusia.berbicara();
-        manusia.memperbaikiKendaraan();
-    }
+    private void printMethodChoices(Object obj, Scanner input) {
+        Method[] methods = obj.getClass().getDeclaredMethods();
 
-    protected void aksiIbu(Manusia manusia) {
-        manusia.mengurusRumah();
-        manusia.memasak();
-        manusia.berbicara();
-        manusia.memberiNasihat();
+        // Filter method yang ingin ditampilkan (misal abaikan method private dan
+        // synthetic)
+        ArrayList<Method> methodList = new ArrayList<>();
+        for (Method m : methods) {
+            if (!m.isSynthetic() && m.getParameterCount() == 0) { // hanya method tanpa parameter
+                methodList.add(m);
+            }
+        }
+
+        // Cetak menu pilihan
+        for (int i = 0; i < methodList.size(); i++) {
+            System.out.println((i + 1) + ". " + methodList.get(i).getName());
+        }
+        System.out.println("0. Lewati");
+
+        System.out.print("Masukkan pilihan: ");
+        int pilihanMethod = -1;
+        try {
+            pilihanMethod = Integer.parseInt(input.nextLine());
+        } catch (NumberFormatException e) {
+            pilihanMethod = -1;
+        }
+
+        if (pilihanMethod == 0) {
+            System.out.println("Lewati aksi.");
+            return;
+        }
+
+        if (pilihanMethod > 0 && pilihanMethod <= methodList.size()) {
+            Method methodToInvoke = methodList.get(pilihanMethod - 1);
+            try {
+                methodToInvoke.setAccessible(true);
+                methodToInvoke.invoke(obj);
+            } catch (Exception e) {
+                System.out.println("Gagal menjalankan metode: " + e.getMessage());
+            }
+        } else {
+            System.out.println("Pilihan tidak valid.");
+        }
     }
 
     private static void clearConsole() {
@@ -121,12 +94,8 @@ public class PrinterService extends BaseService {
         String[] frames;
 
         switch (pilihan.toLowerCase()) {
-            case "dheka", "ghifari", "agis" -> {
-                frames = priaFrames;
-            }
-            case "belva", "bunga", "lilis" -> {
-                frames = wanitaFrames;
-            }
+            case "dheka", "ghifari", "agis" -> frames = priaFrames;
+            case "belva", "bunga", "lilis" -> frames = wanitaFrames;
             default -> {
                 System.out.println("No animation available.");
                 return;
@@ -136,7 +105,7 @@ public class PrinterService extends BaseService {
         try {
             for (int i = 0; i < 6; i++) {
                 clearConsole();
-                System.out.println(frames[i % frames.length]); // tampilkan frame
+                System.out.println(frames[i % frames.length]);
                 Thread.sleep(180);
             }
         } catch (Exception e) {
@@ -146,6 +115,7 @@ public class PrinterService extends BaseService {
         clearConsole();
     }
 
+    // Custom Animation
     private final String[] priaFrames = {
             """
                       ( ^_^ )
@@ -187,5 +157,4 @@ public class PrinterService extends BaseService {
                        /   \\
                     """
     };
-
 }

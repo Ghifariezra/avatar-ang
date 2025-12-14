@@ -3,67 +3,33 @@ package com.polymorphism.ayah;
 import com.polymorphism.Manusia;
 
 public class Ayah extends Manusia {
-    private String hobi;
-    private int jumlahAnak;
+    protected int jumlahAnak;
     protected String kendaraan;
 
-    public Ayah(
-            String nama,
-            int umur,
-            String alamat,
-            boolean pekerjaan,
-            String jenisKelamin,
-            String hobi,
-            int jumlahAnak,
-            String kendaraan
-    ) {
-        super(
-                nama,
-                umur,
-                alamat,
-                pekerjaan,
-                jenisKelamin
-        );
-        this.hobi = hobi;
+    public Ayah(String nama, int umur, String alamat, String jenisKelamin,
+            int jumlahAnak, String kendaraan) {
+        super(nama, umur, alamat, jenisKelamin);
         this.jumlahAnak = jumlahAnak;
         this.kendaraan = kendaraan;
     }
 
     @Override
     public void bekerja() {
-        System.out.println(getName() + " sedang bekerja di kantor.");
+        System.out.println(nama + " bekerja untuk menafkahi keluarga.");
     }
 
-    @Override
-    public void mengasuh() {
-        System.out.println(getName() + " sedang mengasuh anak-anaknya.");
+    public void mengasuhAnak() {
+        System.out.println(nama + " sedang mengasuh " + jumlahAnak + " anak.");
     }
 
-    @Override
-    public void bermain() {
-        System.out.println(getName() + " sedang bermain " + this.hobi + ".");
-    }
-
-    @Override
-    public void berbicara() {
-        System.out.println(getName() + " sedang berbicara dengan ibu.");
-    }
-
-    @Override
     public void memperbaikiKendaraan() {
-        System.out.println(getName() + " sedang memperbaiki " + this.kendaraan + ".");
+        System.out.println(nama + " sedang memperbaiki " + kendaraan + ".");
     }
 
     @Override
-    public void memilikiAnak() {
-        System.out.println(getName() + " memiliki " + this.jumlahAnak + " anak.");
+    public void perkenalan() {
+        super.perkenalan();
+        System.out.println("Peran : Ayah");
+        System.out.println("Jumlah Anak : " + jumlahAnak);
     }
-
-    // Overloading dari method perkenalan yang berasal dari parent class Manusia
-    public void perkenalan(String bekerjaSebagai, String namaAnak) {
-        perkenalan(bekerjaSebagai);
-        System.out.println("Saya memiliki anak bernama " + namaAnak + ".");
-        System.out.println("Saya suka bermain " + this.hobi + ".");
-        System.out.println("=================================");
-    };
 }

@@ -1,6 +1,8 @@
 package com.services;
 
 import java.util.ArrayList;
+import java.util.Scanner;
+
 import com.polymorphism.ayah.*;
 import com.polymorphism.ibu.*;
 
@@ -14,37 +16,33 @@ public class ObjectFactory extends BaseService {
             switch (lower) {
                 case "dheka":
                     listItems.add(new Ayah(
-                            name, 28, "Bogor", true, "Laki-laki",
-                            "Main Game", 2, "Mobil"));
+                            "Dheka", 28, "Bogor", "Laki-laki",
+                            2, "Mobil"));
                     break;
                 case "ghifari":
                     listItems.add(new AyahPekerja(
-                            name, 22, "Bogor", true, "Laki-laki",
-                            "Main Game", 2, "Mobil", "PT. XYZ", "Manager"
-                    ));
+                            "Ghifari", 22, "Bogor", "Laki-laki",
+                            2, "Mobil", "PT. XYZ", "Manager"));
                     break;
                 case "agis":
                     listItems.add(new AyahWirausaha(
-                            name, 45, "Bogor", true, "Laki-laki",
-                            "Main Game", 2, "Mobil", "PT. ABC", "Retail"
-                    ));
+                            "Agis", 45, "Bogor", "Laki-laki",
+                            2, "Mobil", "PT. ABC", "Retail"));
                     break;
                 case "belva":
                     listItems.add(new Ibu(
-                            name, 27, "Bogor", false, "Perempuan",
-                            "Nasi Goreng", "SMA"));
+                            "Belva", 27, "Bogor", "Perempuan",
+                            "Nasi Goreng"));
                     break;
                 case "bunga":
                     listItems.add(new IbuKarir(
-                            name, 27, "Bogor", false, "Perempuan",
-                            "Nasi Goreng", "S1", "PT. Anggur", "CEO"
-                    ));
+                            "Bunga", 27, "Bogor", "Perempuan",
+                            "Nasi Goreng", "PT. Anggur", "CEO"));
                     break;
                 case "lilis":
                     listItems.add(new IbuRumahTangga(
-                            name, 27, "Bogor", false, "Perempuan",
-                            "Nasi Goreng", "S1", 2, "Mengajar anak"
-                    ));
+                            "Lilis", 27, "Bogor", "Perempuan",
+                            "Nasi Goreng", 2));
                     break;
             }
         }
@@ -53,6 +51,6 @@ public class ObjectFactory extends BaseService {
     }
 
     @Override
-    public void printOut(String pilihan, ArrayList<Object> listItems) {
+    public void printOut(String pilihan, ArrayList<Object> listItems, Scanner input) {
     }
 }

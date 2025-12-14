@@ -1,40 +1,27 @@
 package com.polymorphism.ibu;
 
 public class IbuKarir extends Ibu {
-    private String namaPerusahaan;
+    private String perusahaan;
     private String posisi;
 
-    public IbuKarir(
-            String nama,
-            int umur,
-            String alamat,
-            boolean pekerjaan,
-            String jenisKelamin,
-            String keahlianMasak,
-            String pendidikanTerakhir,
-            String namaPerusahaan,
-            String posisi) {
-        super(nama, umur, alamat, true, jenisKelamin, keahlianMasak, pendidikanTerakhir);
-        this.namaPerusahaan = namaPerusahaan;
+    public IbuKarir(String nama, int umur, String alamat, String jenisKelamin,
+            String keahlianMasak, String perusahaan, String posisi) {
+        super(nama, umur, alamat, jenisKelamin, keahlianMasak);
+        this.perusahaan = perusahaan;
         this.posisi = posisi;
     }
 
     @Override
     public void mengurusRumah() {
-        System.out.println(getName() + " menyeimbangkan antara bekerja di " + namaPerusahaan + " dan mengurus rumah.");
+        System.out.println(nama + " membagi waktu antara rumah dan pekerjaan.");
+    }
+
+    @Override
+    public void bekerja() {
+        System.out.println(nama + " bekerja sebagai " + posisi + " di " + perusahaan + ".");
     }
 
     public void presentasi() {
-        System.out
-                .println(getName() + " sedang melakukan presentasi sebagai " + posisi + " di " + namaPerusahaan + ".");
-    }
-
-    // Overloading perkenalan khusus IbuKarir
-    public void perkenalan(String masakanFavorit, String bekerjaSebagai, int pengalamanKerja) {
-        super.perkenalan(masakanFavorit, bekerjaSebagai);
-        System.out.println("Saya bekerja sebagai " + posisi + " di " + namaPerusahaan + ".");
-        System.out.println("Pengalaman kerja saya sudah " + pengalamanKerja + " tahun.");
-        System.out.println("Pendidikan terakhir saya adalah " + pendidikanTerakhir + ".");
-        System.out.println("=================================");
+        System.out.println(nama + " sedang melakukan presentasi di kantor.");
     }
 }

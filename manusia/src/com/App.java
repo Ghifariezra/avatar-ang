@@ -6,7 +6,7 @@ import java.util.*;
 public class App {
     public static void main(String[] args) {
         BaseService objectFactory = new ObjectFactory();
-        BaseService printerService = new PrinterService();
+        PrinterService printerService = new PrinterService();
 
         String[] names = {
                 "Dheka",
@@ -22,39 +22,39 @@ public class App {
 
         while (true) {
             System.out.println("\n=== Daftar Nama ===");
-            for (String name : names) {
-                System.out.println("- " + name);
+            for (int i = 0; i < names.length; i++) {
+                System.out.println((i + 1) + ". " + names[i]);
             }
-            System.out.println("- exit (keluar program)");
+            System.out.println("0. exit (keluar program)");
 
-            System.out.print("\nMasukan pilihan: ");
+            System.out.print("\nMasukan pilihan (nomor): ");
             String pilihan = input.nextLine().trim();
 
-            // cek exit
-            if (pilihan.equalsIgnoreCase("exit")) {
+            if (pilihan.equals("0")) {
                 System.out.println("Program selesai. Terima kasih!");
                 break;
             }
 
-            // validasi input
-            if (!isValidName(pilihan, names)) {
-                System.out.println("❌ Nama tidak ditemukan! Silakan ulangi.\n");
-                continue; // kembali ke awal while
+            if (!isValidIndex(pilihan, names.length)) {
+                System.out.println("❌ Pilihan tidak valid! Silakan ulangi.\n");
+                continue;
             }
 
-            // jalankan printOut
-            printerService.printOut(pilihan, listItems);
+            int index = Integer.parseInt(pilihan) - 1;
+            String namaTerpilih = names[index];
+
+            printerService.printOut(namaTerpilih, listItems, input);
         }
 
         input.close();
     }
 
-    private static boolean isValidName(String input, String[] names) {
-        for (String name : names) {
-            if (name.equalsIgnoreCase(input)) {
-                return true;
-            }
+    private static boolean isValidIndex(String input, int max) {
+        try {
+            int num = Integer.parseInt(input);
+            return num >= 0 && num <= max;
+        } catch (NumberFormatException e) {
+            return false;
         }
-        return false;
     }
 }
