@@ -37,4 +37,36 @@ public class IbuRumahTangga extends Ibu {
     public void mengajarkanKeterampilan() {
         System.out.println(nama + " mengajarkan keterampilan baru pada anak.");
     }
+
+    public void infoKeluarga() {
+        System.out.println(nama + " mengasuh " + jumlahAnakDiasuh + " anak di rumah.");
+    }
+
+    public void menyiapkanSarapan() {
+        System.out.println(nama + " menyiapkan sarapan untuk keluarga.");
+    }
+
+    public void membersihkanRumah() {
+        System.out.println(nama + " sedang membersihkan rumah.");
+    }
+
+    public void mencuciPakaian() {
+        System.out.println(nama + " mencuci pakaian keluarga.");
+    }
+
+    public void menemaniBelajar() {
+        System.out.println(nama + " menemani anak belajar di rumah.");
+    }
+
+    public void berbelanjaKebutuhan() {
+        System.out.println(nama + " berbelanja kebutuhan rumah tangga.");
+    }
+
+    public void menyiapkanMakanMalam() {
+        System.out.println(nama + " menyiapkan makan malam untuk keluarga.");
+    }
+
+    public void beristirahat() {
+        System.out.println(nama + " beristirahat setelah menyelesaikan pekerjaan rumah.");
+    }
 }
