@@ -20,8 +20,8 @@ public class AyahWirausaha extends Ayah {
     @Override
     public void perkenalan() {
         super.perkenalan();
-        System.out.println("Usaha : " + namaUsaha);
-        System.out.println("Bidang : " + bidangUsaha);
+        System.out.println("Usaha   : " + namaUsaha);
+        System.out.println("Bidang  : " + bidangUsaha);
     }
 
     public void bernegosiasi() {
@@ -46,5 +46,41 @@ public class AyahWirausaha extends Ayah {
 
     public void merekrutKaryawan() {
         System.out.println(nama + " merekrut karyawan untuk usaha " + namaUsaha + ".");
+    }
+
+    public void infoUsaha() {
+        System.out.println(nama + " memiliki usaha " + namaUsaha + " di bidang " + bidangUsaha + ".");
+    }
+
+    public void membukaUsaha() {
+        System.out.println(nama + " membuka usaha " + namaUsaha + ".");
+    }
+
+    public void menutupUsaha() {
+        System.out.println(nama + " menutup operasional usaha hari ini.");
+    }
+
+    public void menerimaPesanan() {
+        System.out.println(nama + " menerima pesanan dari pelanggan.");
+    }
+
+    public void melayaniPelanggan() {
+        System.out.println(nama + " sedang melayani pelanggan di usaha " + namaUsaha + ".");
+    }
+
+    public void mengecekStok() {
+        System.out.println(nama + " mengecek stok barang usaha " + namaUsaha + ".");
+    }
+
+    public void mencatatPenjualan() {
+        System.out.println(nama + " mencatat hasil penjualan usaha.");
+    }
+
+    public void promosiOnline() {
+        System.out.println(nama + " melakukan promosi online untuk usaha " + namaUsaha + ".");
+    }
+
+    public void evaluasiUsaha() {
+        System.out.println(nama + " melakukan evaluasi perkembangan usaha.");
     }
 }

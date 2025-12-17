@@ -20,8 +20,8 @@ public class AyahPekerja extends Ayah {
     @Override
     public void perkenalan() {
         super.perkenalan();
-        System.out.println("Pekerjaan : " + jabatan);
-        System.out.println("Perusahaan : " + perusahaan);
+        System.out.println("Pekerjaan   : " + jabatan);
+        System.out.println("Perusahaan  : " + perusahaan);
     }
 
     public void rapat() {
@@ -46,5 +46,45 @@ public class AyahPekerja extends Ayah {
 
     public void mengaturJadwal() {
         System.out.println(nama + " mengatur jadwal kerjanya.");
+    }
+
+    public void infoPekerjaan() {
+        System.out.println(nama + " bekerja sebagai " + jabatan + " di perusahaan " + perusahaan + ".");
+    }
+
+    public void mulaiKerja() {
+        System.out.println(nama + " mulai bekerja di " + perusahaan + ".");
+    }
+
+    public void selesaiKerja() {
+        System.out.println(nama + " telah menyelesaikan pekerjaan hari ini.");
+    }
+
+    public void lembur() {
+        System.out.println(nama + " sedang lembur di " + perusahaan + ".");
+    }
+
+    public void meetingOnline() {
+        System.out.println(nama + " mengikuti meeting online dengan tim kerja.");
+    }
+
+    public void evaluasiKinerja() {
+        System.out.println(nama + " sedang melakukan evaluasi kinerja proyek.");
+    }
+
+    public void memberiArahanTim() {
+        System.out.println(nama + " memberikan arahan kepada tim di " + perusahaan + ".");
+    }
+
+    public void menyusunLaporan() {
+        System.out.println(nama + " sedang menyusun laporan pekerjaan.");
+    }
+
+    public void istirahatKerja() {
+        System.out.println(nama + " sedang istirahat sejenak dari pekerjaan.");
+    }
+
+    public void pulangKantor() {
+        System.out.println(nama + " pulang dari kantor setelah bekerja.");
     }
 }
