@@ -27,7 +27,7 @@ public class AyahWirausaha extends Ayah {
     public void bernegosiasi() {
         System.out.println(nama + " sedang bernegosiasi dengan klien.");
     }
-
+    
     public void memasarkanProduk() {
         System.out.println(nama + " memasarkan produk dari usaha " + namaUsaha + ".");
     }
@@ -82,5 +82,12 @@ public class AyahWirausaha extends Ayah {
 
     public void evaluasiUsaha() {
         System.out.println(nama + " melakukan evaluasi perkembangan usaha.");
+    }
+    public void membukaCabang() {
+        System.out.println(nama + " sedang membuka cabang baru " + namaUsaha + " di luar kota.");
+    }
+
+    public void promosiDiSosmed() {
+        System.out.println(nama + " sedang mempromosikan produk " + namaUsaha + " di sosial media.");
     }
 }
